@@ -23,6 +23,50 @@
   --hairline: rgba(255, 255, 255, 0.12);
 }
 
+/* ── HUD Keyframes ─────────────────────────────────────────────────────────── */
+@keyframes hudReveal {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes hudFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scanDown {
+  from { top: -3px; }
+  to   { top: 100%; }
+}
+@keyframes dataFlicker {
+  0%,89%,91%,93%,100% { opacity: 1; }
+  90%,92% { opacity: 0.3; }
+}
+@keyframes bracketIn {
+  from { opacity: 0; transform: scale(1.04); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes grain {
+  0%   { transform: translate(0,0); }
+  10%  { transform: translate(-2%,-3%); }
+  30%  { transform: translate(3%,2%); }
+  50%  { transform: translate(-1%,4%); }
+  70%  { transform: translate(2%,-2%); }
+  100% { transform: translate(0,0); }
+}
+@keyframes drawLine {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+@keyframes pulse-accent {
+  0%,100% { box-shadow: 0 0 0 0 rgba(108,92,231,0); }
+  50%     { box-shadow: 0 0 12px 2px rgba(108,92,231,0.35); }
+}
+
+.hud-reveal { animation: hudReveal 0.8s cubic-bezier(0.16,1,0.3,1) both; }
+.hud-fade   { animation: hudFadeIn 1s ease both; }
+.scan-line  { animation: scanDown 12s linear infinite; }
+.data-flicker { animation: dataFlicker 8s ease-in-out infinite; }
+.bracket-in { animation: bracketIn 0.6s cubic-bezier(0.16,1,0.3,1) both; }
+
 @layer base {
   html, body {
     background-color: var(--background);
