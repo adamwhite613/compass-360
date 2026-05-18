@@ -54,9 +54,9 @@ function useCounter(target: number, duration = 2000, trigger = true) {
 
 // ── Primitives ────────────────────────────────────────────────────────────────
 
-function HudLabel({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+function HudLabel({ children, className = "", style }: { children: React.ReactNode; className?: string; style?: React.CSSProperties }) {
   return (
-    <span className={`font-mono text-[10px] uppercase tracking-[0.28em] text-white/40 ${className}`}>
+    <span className={`font-mono text-[10px] uppercase tracking-[0.28em] text-white/40 ${className}`} style={style}>
       {children}
     </span>
   );
@@ -104,7 +104,7 @@ function Logo() {
       <img
         src="/images/Compass 360 logo no background.png"
         alt="Compass 360"
-        style={{ height: 80, width: "auto" }}
+        className="h-14 md:h-20 w-auto"
       />
     </a>
   );
@@ -114,7 +114,7 @@ function Logo() {
 
 const productTabs = [
   { name: "Finance", count: "01", href: "https://finance.adamwhite.link" },
-  { name: "Fit",     count: "02", href: "#products" },
+  { name: "Fit",     count: "02", href: "https://fit.adamwhite.link" },
   { name: "Function", count: "03", href: "#products" },
   { name: "Portfolio", count: "04", href: "#products" },
 ];
@@ -135,13 +135,13 @@ function Nav() {
                backdropFilter: scrolled ? "blur(20px)" : "none",
                borderBottom: scrolled ? "1px solid rgba(255,255,255,0.07)" : "none" }}>
 
-      {/* Main nav row — three-column so center is truly centered */}
-      <div className="py-4 flex items-center" style={{ paddingLeft: "2.5em", paddingRight: "2.5em" }}>
+      {/* Main nav row */}
+      <div className="py-3 md:py-4 flex items-center" style={{ paddingLeft: "1.5em", paddingRight: "1.5em" }}>
         <div className="flex-1 hud-reveal" style={{ animationDelay: "0.1s" }}>
           <Logo />
         </div>
 
-        <ul className="flex items-center gap-10 font-mono text-[10px] uppercase tracking-[0.22em] text-white/50">
+        <ul className="hidden md:flex items-center gap-10 font-mono text-[10px] uppercase tracking-[0.22em] text-white/50">
           {["Products", "Pricing"].map((item, i) => (
             <li key={item} className="hud-reveal" style={{ animationDelay: `${0.2 + i * 0.08}s` }}>
               <a href={`#${item.toLowerCase()}`} className="hover:text-white transition-colors">{item}</a>
@@ -151,35 +151,27 @@ function Nav() {
 
         <div className="flex-1 flex justify-end hud-reveal" style={{ animationDelay: "0.36s" }}>
           <a href="#cta"
-            className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/70 px-4 py-2 transition-all hover:text-white"
+            className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/70 px-3 py-1.5 md:px-4 md:py-2 transition-all hover:text-white"
             style={{ border: `1px solid rgba(108,92,231,0.45)` }}>
             Get Access
           </a>
         </div>
       </div>
 
-      {/* Second row — product tabs */}
-      <div className="pb-3 flex items-center justify-between border-t border-white/[0.06]" style={{ paddingLeft: "2.5em", paddingRight: "2.5em" }}>
-        <HudLabel>360 Suite</HudLabel>
-
-        <div className="flex items-center gap-8">
-          {productTabs.map((tab, i) => (
-            <a key={tab.name} href={tab.href}
-              onClick={() => setActiveTab(i)}
-              className="flex items-baseline gap-1 font-mono text-[11px] transition-colors"
-              style={{ color: activeTab === i ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.35)" }}>
-              {tab.name}
-              <sup className="text-[9px]" style={{ color: activeTab === i ? ACCENT : "rgba(255,255,255,0.25)" }}>
-                {tab.count}
-              </sup>
-            </a>
-          ))}
-        </div>
-
-        <a href="#products"
-          className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/35 hover:text-white/70 transition-colors flex items-center gap-1.5">
-          All Apps <span>+</span>
-        </a>
+      {/* Second row — product tabs, centered */}
+      <div className="pb-3 flex items-center justify-center gap-6 md:gap-8 border-t border-white/[0.06]"
+        style={{ paddingLeft: "1.5em", paddingRight: "1.5em" }}>
+        {productTabs.map((tab, i) => (
+          <a key={tab.name} href={tab.href}
+            onClick={() => setActiveTab(i)}
+            className="flex items-baseline gap-1 font-mono text-[11px] transition-colors"
+            style={{ color: activeTab === i ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.35)" }}>
+            {tab.name}
+            <sup className="text-[9px]" style={{ color: activeTab === i ? ACCENT : "rgba(255,255,255,0.25)" }}>
+              {tab.count}
+            </sup>
+          </a>
+        ))}
       </div>
     </nav>
   );
@@ -203,7 +195,7 @@ function Hero() {
   ];
 
   return (
-    <section id="top" className="relative flex min-h-screen flex-col overflow-hidden">
+    <section id="top" className="relative flex flex-col overflow-hidden" style={{ minHeight: "100svh" }}>
 
       {/* ── Video background ── */}
       <div className="absolute inset-0">
@@ -223,13 +215,13 @@ function Hero() {
       </div>
 
 
-      {/* ── Centered bottom headline — Mercury style ── */}
+      {/* ── Headline — bottom-anchored ── */}
       <div className="relative z-10 flex flex-1 flex-col justify-end items-center text-center pb-28 px-6">
         <div style={{ opacity: loaded ? 1 : 0, transition: "opacity 1s ease 2s" }}>
           <h1 style={{ fontFamily: "'Cormorant Garamond', serif",
-                       fontSize: "3em", lineHeight: 1 }}
+                       fontSize: "clamp(2.2em, 10vw, 3em)", lineHeight: 1 }}
             className="font-light text-white uppercase">
-            Navigate to Freedom
+            Command Your Freedom
           </h1>
           <p className="mt-3 text-white/45 text-[11px] uppercase" style={{ letterSpacing: "0.1em" }}>
             instruments for the turbulent waters of modern life
@@ -332,12 +324,12 @@ function Problem() {
 
 const products = [
   { icon: "◐", name: "Compass Finance", tagline: "Complete personal finance intelligence", desc: "Real-time budgeting, cash flow forecasting, credit tracking, and AI-powered transaction insights — all in one instrument.", status: "LIVE", live: true, href: "https://finance.adamwhite.link" },
-  { icon: "◇", name: "Compass Fit", tagline: "Training, nutrition, and recovery tracking", desc: "Log workouts, track macros, monitor recovery metrics. Your body as a system to be understood and optimised.", status: "IN DEVELOPMENT", live: false, href: null },
+  { icon: "◇", name: "Compass Fit", tagline: "Training, nutrition, and recovery tracking", desc: "Log workouts, track macros, monitor recovery metrics. Your body as a system to be understood and optimised.", status: "LIVE", live: true, href: "https://fit.adamwhite.link" },
   { icon: "△", name: "Compass Function", tagline: "Daily intention and habit engine", desc: "Set daily intentions, build systems that compound, and stay on bearing toward your long-term goals.", status: "IN DEVELOPMENT", live: false, href: null },
   { icon: "▢", name: "Compass Portfolio", tagline: "Your story, your work, your legacy", desc: "A living portfolio of who you are and what you've built. Shareable, searchable, yours.", status: "IN DEVELOPMENT", live: false, href: null },
 ];
 
-function ProductCard({ product, delay }: { product: typeof products[0]; delay: number }) {
+function ProductCard({ product }: { product: typeof products[0] }) {
   const [hovered, setHovered] = useState(false);
   return (
     <div className="relative group bg-[#0a0a0f] p-10 md:p-12 cursor-default transition-all duration-300"
@@ -400,9 +392,122 @@ function Products() {
           {products.map((p, i) => (
             <div key={p.name} className={`transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
               style={{ transitionDelay: `${i * 0.1}s` }}>
-              <ProductCard product={p} delay={i * 0.1} />
+              <ProductCard product={p} />
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── Testimonials ──────────────────────────────────────────────────────────────
+
+const testimonials = [
+  {
+    image: "/images/testimonial-1.png",
+    quote: "I've given everything to Adam, every part of myself. I know I'm in good hands with the Compass 360 Suite.",
+    name: "Margot Robbie",
+    title: "Actress, Producer",
+  },
+  {
+    image: "/images/testimonial-2.png",
+    quote: "Adam's powerful Compass 360 Suite has transformed how I manage my finances. I now rely on Adam not just to manage my own life, but for financial and investment advice. He's a true hero.",
+    name: "Warren Buffett",
+    title: "Chairman and CEO, Berkshire Hathaway",
+  },
+  {
+    image: "/images/testimonial-3.png",
+    quote: "The Compass 360 Suite has been a game-changer for my financial management. And remember, I'm not just a client, I'm also the owner!",
+    name: "Adam White",
+    title: "Founder, Compass 360",
+  },
+];
+
+function Testimonials() {
+  const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [fading, setFading] = useState(false);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const { ref, inView } = useInView();
+
+  const goTo = (idx: number) => {
+    setFading(true);
+    setTimeout(() => { setCurrent(idx); setFading(false); }, 350);
+  };
+
+  const next = useRef(() => {});
+  next.current = () => goTo((current + 1) % testimonials.length);
+
+  useEffect(() => {
+    if (paused) { if (intervalRef.current) clearInterval(intervalRef.current); return; }
+    intervalRef.current = setInterval(() => next.current(), 5000);
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+  }, [paused]);
+
+  const t = testimonials[current];
+
+  return (
+    <section className="border-t border-white/[0.06] px-6 py-24 md:py-32">
+      <div className="mx-auto max-w-6xl">
+        <SectionLabel>In Their Words</SectionLabel>
+
+        <div ref={ref}
+          className={`transition-all duration-1000 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onTouchStart={() => setPaused(true)}
+          onTouchEnd={() => setPaused(false)}>
+
+          {/* Slide */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/[0.04]">
+
+            {/* Image */}
+            <div className="relative overflow-hidden bg-black/40 rounded-2xl" style={{ minHeight: 340 }}>
+              <Brackets size={20} color="rgba(108,92,231,0.4)" />
+              <img
+                key={current}
+                src={t.image}
+                alt={t.name}
+                className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
+                style={{ opacity: fading ? 0 : 1 }}
+              />
+              <div className="absolute inset-0"
+                style={{ background: "linear-gradient(135deg, rgba(4,8,24,0.35) 0%, transparent 60%)" }} />
+            </div>
+
+            {/* Quote */}
+            <div className="relative flex flex-col justify-center px-10 md:px-16 py-14 md:py-20 bg-[#0a0a0f]">
+              <Brackets size={16} color="rgba(255,255,255,0.07)" />
+
+              <div className="transition-opacity duration-500" style={{ opacity: fading ? 0 : 1 }}>
+                <span className="font-mono text-5xl leading-none mb-6 block"
+                  style={{ color: ACCENT, fontFamily: "Georgia, serif" }}>&ldquo;</span>
+                <blockquote className="font-serif font-light text-xl md:text-2xl text-white/80 leading-relaxed mb-8"
+                  style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  {t.quote}
+                </blockquote>
+                <div>
+                  <HudLabel className="text-white/60">{t.name}</HudLabel>
+                  <HudLabel className="block mt-1">{t.title}</HudLabel>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Dots */}
+          <div className="flex items-center justify-center gap-3 mt-8">
+            {testimonials.map((_, i) => (
+              <button key={i} onClick={() => goTo(i)}
+                className="transition-all duration-300"
+                style={{
+                  width: i === current ? 24 : 6,
+                  height: 6,
+                  borderRadius: 3,
+                  background: i === current ? ACCENT : "rgba(255,255,255,0.2)",
+                }} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -556,6 +661,7 @@ function Index() {
       <Hero />
       <Problem />
       <Products />
+      <Testimonials />
       <Pricing />
       <CtaBanner />
       <Footer />
