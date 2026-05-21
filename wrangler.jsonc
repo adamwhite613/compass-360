@@ -1,10 +1,10 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "compass-360",
+  "name": "fairwinds-360",
   "compatibility_date": "2025-09-24",
   "compatibility_flags": ["nodejs_compat"],
   "main": "src/server.ts",
   "routes": [
-    { "pattern": "compass.adamwhite.link", "custom_domain": true }
+    { "pattern": "fairwinds360.com", "custom_domain": true }
   ]
 }

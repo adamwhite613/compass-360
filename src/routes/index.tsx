@@ -5,9 +5,9 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Compass 360 Suite — Navigate to Freedom" },
+      { title: "Fairwinds 360 Suite — Navigate to Freedom" },
       { name: "description", content: "Instruments for personal freedom. Navigate the turbulent waters of modern life." },
-      { property: "og:title", content: "Compass 360 Suite — Navigate to Freedom" },
+      { property: "og:title", content: "Fairwinds 360 Suite — Navigate to Freedom" },
       { property: "og:image", content: "/images/hero.jpg" },
     ],
   }),
@@ -102,8 +102,8 @@ function Logo() {
   return (
     <a href="#top" className="block">
       <img
-        src="/images/Compass 360 logo no background.png"
-        alt="Compass 360"
+        src="/images/fairwinds-logo.png"
+        alt="Fairwinds 360"
         className="h-14 md:h-20 w-auto"
       />
     </a>
@@ -113,10 +113,10 @@ function Logo() {
 // ── Nav ───────────────────────────────────────────────────────────────────────
 
 const productTabs = [
-  { name: "Finance", count: "01", href: "https://finance.adamwhite.link" },
-  { name: "Fit",     count: "02", href: "https://fit.adamwhite.link" },
-  { name: "Function", count: "03", href: "#products" },
-  { name: "Portfolio", count: "04", href: "#products" },
+  { name: "Finance", count: "01", href: "https://finance.fairwinds360.com" },
+  { name: "Fit",     count: "02", href: "https://fit.fairwinds360.com" },
+  { name: "Function", count: "03", href: "https://function.fairwinds360.com" },
+  { name: "Portfolio", count: "04", href: "https://portfolio.fairwinds360.com" },
 ];
 
 function Nav() {
@@ -163,6 +163,7 @@ function Nav() {
         style={{ paddingLeft: "1.5em", paddingRight: "1.5em" }}>
         {productTabs.map((tab, i) => (
           <a key={tab.name} href={tab.href}
+            target="_blank" rel="noopener noreferrer"
             onClick={() => setActiveTab(i)}
             className="flex items-baseline gap-1 font-mono text-[11px] transition-colors"
             style={{ color: activeTab === i ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.35)" }}>
@@ -221,7 +222,7 @@ function Hero() {
           <h1 style={{ fontFamily: "'Cormorant Garamond', serif",
                        fontSize: "clamp(2.2em, 10vw, 3em)", lineHeight: 1 }}
             className="font-light text-white uppercase">
-            Command Your Freedom
+            Strategy. Visibility. Freedom.
           </h1>
           <p className="mt-3 text-white/45 text-[11px] uppercase" style={{ letterSpacing: "0.1em" }}>
             instruments for the turbulent waters of modern life
@@ -323,10 +324,10 @@ function Problem() {
 // ── Products ──────────────────────────────────────────────────────────────────
 
 const products = [
-  { icon: "◐", name: "Compass Finance", tagline: "Complete personal finance intelligence", desc: "Real-time budgeting, cash flow forecasting, credit tracking, and AI-powered transaction insights — all in one instrument.", status: "LIVE", live: true, href: "https://finance.adamwhite.link" },
-  { icon: "◇", name: "Compass Fit", tagline: "Training, nutrition, and recovery tracking", desc: "Log workouts, track macros, monitor recovery metrics. Your body as a system to be understood and optimised.", status: "LIVE", live: true, href: "https://fit.adamwhite.link" },
-  { icon: "△", name: "Compass Function", tagline: "Daily intention and habit engine", desc: "Set daily intentions, build systems that compound, and stay on bearing toward your long-term goals.", status: "IN DEVELOPMENT", live: false, href: null },
-  { icon: "▢", name: "Compass Portfolio", tagline: "Your story, your work, your legacy", desc: "A living portfolio of who you are and what you've built. Shareable, searchable, yours.", status: "IN DEVELOPMENT", live: false, href: null },
+  { icon: "◐", name: "Fairwinds Finance", tagline: "Complete personal finance intelligence", desc: "Real-time budgeting, cash flow forecasting, credit tracking, and AI-powered transaction insights — all in one instrument.", status: "LIVE", live: true, href: "https://finance.fairwinds360.com" },
+  { icon: "◇", name: "Fairwinds Fit", tagline: "Training, nutrition, and recovery tracking", desc: "Log workouts, track macros, monitor recovery metrics. Your body as a system to be understood and optimised.", status: "LIVE", live: true, href: "https://fit.fairwinds360.com" },
+  { icon: "△", name: "Fairwinds Function", tagline: "Daily intention and habit engine", desc: "Set daily intentions, build systems that compound, and stay on bearing toward your long-term goals.", status: "LIVE", live: true, href: "https://function.fairwinds360.com" },
+  { icon: "▢", name: "Fairwinds Portfolio", tagline: "Career journal and archive", desc: "A private logbook for the work that matters. Document projects, capture learnings, and build a record of what you've shipped.", status: "LIVE", live: true, href: "https://portfolio.fairwinds360.com" },
 ];
 
 function ProductCard({ product }: { product: typeof products[0] }) {
@@ -368,6 +369,7 @@ function ProductCard({ product }: { product: typeof products[0] }) {
         </span>
         {product.live && product.href && (
           <a href={product.href}
+            target="_blank" rel="noopener noreferrer"
             className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/40 hover:text-white transition-colors flex items-center gap-2">
             Launch <span>→</span>
           </a>
@@ -405,22 +407,22 @@ function Products() {
 
 const testimonials = [
   {
-    image: "/images/testimonial-1.png",
-    quote: "I've given everything to Adam, every part of myself. I know I'm in good hands with the Compass 360 Suite.",
+    image: "/images/testimonial-1.jpg",
+    quote: "I've given everything to Adam, every part of myself. I know I'm in good hands with the Fairwinds 360 Suite.",
     name: "Margot Robbie",
     title: "Actress, Producer",
   },
   {
-    image: "/images/testimonial-2.png",
-    quote: "Adam's powerful Compass 360 Suite has transformed how I manage my finances. I now rely on Adam not just to manage my own life, but for financial and investment advice. He's a true hero.",
+    image: "/images/testimonial-2.jpg",
+    quote: "Adam's powerful Fairwinds 360 Suite has transformed how I manage my finances. I now rely on Adam not just to manage my own life, but for financial and investment advice. He's a true hero.",
     name: "Warren Buffett",
     title: "Chairman and CEO, Berkshire Hathaway",
   },
   {
     image: "/images/testimonial-3.png",
-    quote: "The Compass 360 Suite has been a game-changer for my financial management. And remember, I'm not just a client, I'm also the owner!",
+    quote: "The Fairwinds 360 Suite has been a game-changer for my financial management. And remember, I'm not just a client, I'm also the owner!",
     name: "Adam White",
-    title: "Founder, Compass 360",
+    title: "Founder, Fairwinds 360",
   },
 ];
 
@@ -463,13 +465,13 @@ function Testimonials() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/[0.04]">
 
             {/* Image */}
-            <div className="relative overflow-hidden bg-black/40 rounded-2xl" style={{ minHeight: 340 }}>
+            <div className="relative overflow-hidden bg-black/40 rounded-2xl" style={{ aspectRatio: '1 / 1' }}>
               <Brackets size={20} color="rgba(108,92,231,0.4)" />
               <img
                 key={current}
                 src={t.image}
                 alt={t.name}
-                className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
+                className="absolute inset-0 w-full h-full object-contain transition-opacity duration-500"
                 style={{ opacity: fading ? 0 : 1 }}
               />
               <div className="absolute inset-0"
@@ -517,70 +519,175 @@ function Testimonials() {
 // ── Pricing ───────────────────────────────────────────────────────────────────
 
 const tiers = [
-  { name: "Compass Finance", price: "Free", sub: "Always", features: ["Full finance intelligence", "Unlimited transactions", "AI categorisation", "Plaid bank sync"], highlight: false },
-  { name: "Compass 360 Suite", price: "Free", sub: "All four apps, forever", features: ["Finance · Fit · Tasks · Portfolio", "Unified command dashboard", "Cross-app intelligence", "Founding member status"], highlight: true },
-  { name: "Compass Pro", price: "Free", sub: "Priority + early access", features: ["All Suite features", "Early feature drops", "Direct feedback channel", "First on every new instrument"], highlight: false },
+  {
+    name: "Fairwinds Finance",
+    tagline: "Personal finance intelligence",
+    monthly: 19.99,
+    annualMonthly: 15.99,
+    annualTotal: 191.99,
+    features: [
+      "Real-time budget tracking",
+      "Unlimited transaction imports",
+      "AI-powered categorisation",
+      "Cash flow forecasting (90 days)",
+      "Credit & debt payoff calculator",
+      "Plaid bank sync",
+    ],
+    highlight: false,
+    badge: null,
+  },
+  {
+    name: "Finance + Fit",
+    tagline: "Money and body in sync",
+    monthly: 29.99,
+    annualMonthly: 23.99,
+    annualTotal: 287.99,
+    features: [
+      "Everything in Finance",
+      "Workout logging & programming",
+      "Macro & nutrition tracking",
+      "Recovery metrics",
+      "Training history & analytics",
+    ],
+    highlight: false,
+    badge: null,
+  },
+  {
+    name: "360 Suite",
+    tagline: "The full instrument panel",
+    monthly: 49.99,
+    annualMonthly: 39.99,
+    annualTotal: 479.99,
+    features: [
+      "Everything in Finance + Fit",
+      "Career journal & portfolio",
+      "Daily intention & habit engine",
+      "Cross-app intelligence",
+      "Priority support & early access",
+    ],
+    highlight: true,
+    badge: "Most Popular",
+  },
 ];
 
 function Pricing() {
   const { ref, inView } = useInView();
+  const [annual, setAnnual] = useState(false);
+
   return (
     <section id="pricing" className="border-t border-white/[0.06] px-6 py-32 md:py-40">
       <div className="mx-auto max-w-6xl">
         <SectionLabel>Pricing</SectionLabel>
-        <h2 className={`font-serif font-light text-center text-5xl md:text-7xl text-white mb-20 transition-all duration-1000 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+        <h2 className={`font-serif font-light text-center text-5xl md:text-7xl text-white mb-12 transition-all duration-1000 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
           style={{ fontFamily: "'Cormorant Garamond', serif" }}>
           Choose your altitude.
         </h2>
 
-        <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {tiers.map((t, i) => (
-            <div key={t.name}
-              className={`relative flex flex-col p-10 backdrop-blur-sm transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+        {/* Billing toggle */}
+        <div className={`flex items-center justify-center gap-3 mb-16 transition-all duration-700 ${inView ? "opacity-100" : "opacity-0"}`}>
+          <button
+            onClick={() => setAnnual(false)}
+            className="font-mono text-[11px] uppercase tracking-[0.2em] px-5 py-2 transition-all duration-200"
+            style={{
+              background: !annual ? "rgba(108,92,231,0.15)" : "transparent",
+              border: `1px solid ${!annual ? ACCENT : "rgba(255,255,255,0.15)"}`,
+              color: !annual ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.35)",
+            }}>
+            Monthly
+          </button>
+          <button
+            onClick={() => setAnnual(true)}
+            className="font-mono text-[11px] uppercase tracking-[0.2em] px-5 py-2 transition-all duration-200 flex items-center gap-2"
+            style={{
+              background: annual ? "rgba(108,92,231,0.15)" : "transparent",
+              border: `1px solid ${annual ? ACCENT : "rgba(255,255,255,0.15)"}`,
+              color: annual ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.35)",
+            }}>
+            Annual
+            <span className="px-1.5 py-0.5 text-[9px] tracking-[0.15em]"
               style={{
-                transitionDelay: `${i * 0.12}s`,
-                border: `1px solid ${t.highlight ? ACCENT : "rgba(255,255,255,0.1)"}`,
-                background: t.highlight ? `rgba(108,92,231,0.06)` : "rgba(255,255,255,0.015)",
+                background: annual ? ACCENT : "rgba(255,255,255,0.08)",
+                color: annual ? "#fff" : "rgba(255,255,255,0.4)",
+                borderRadius: 2,
               }}>
-              {t.highlight && (
-                <>
-                  <Brackets size={16} color={ACCENT} />
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 font-mono text-[10px] tracking-[0.25em] uppercase"
-                    style={{ background: "#0a0a0f", border: `1px solid ${ACCENT}`, color: ACCENT }}>
-                    Recommended
+              SAVE 20%
+            </span>
+          </button>
+        </div>
+
+        <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {tiers.map((t, i) => {
+            const price = annual ? t.annualMonthly : t.monthly;
+            return (
+              <div key={t.name}
+                className={`relative flex flex-col p-10 backdrop-blur-sm transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+                style={{
+                  transitionDelay: `${i * 0.12}s`,
+                  border: `1px solid ${t.highlight ? ACCENT : "rgba(255,255,255,0.1)"}`,
+                  background: t.highlight ? `rgba(108,92,231,0.06)` : "rgba(255,255,255,0.015)",
+                }}>
+
+                {t.highlight && (
+                  <>
+                    <Brackets size={16} color={ACCENT} />
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 font-mono text-[10px] tracking-[0.25em] uppercase"
+                      style={{ background: "#0a0a0f", border: `1px solid ${ACCENT}`, color: ACCENT }}>
+                      {t.badge}
+                    </span>
+                  </>
+                )}
+
+                {/* Name + tagline */}
+                <HudLabel className="mb-1">{t.name}</HudLabel>
+                <p className="font-mono text-[10px] tracking-[0.15em] mb-6" style={{ color: "rgba(255,255,255,0.25)" }}>
+                  {t.tagline}
+                </p>
+
+                {/* Price */}
+                <div className="flex items-end gap-2 mb-1">
+                  <span className="font-serif font-light text-5xl text-white leading-none"
+                    style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                    ${price.toFixed(2)}
                   </span>
-                </>
-              )}
+                  <HudLabel className="mb-1">/ mo</HudLabel>
+                </div>
 
-              <HudLabel className="mb-4">{t.name}</HudLabel>
-              <div className="font-serif font-light text-6xl text-white mt-2"
-                style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                {t.price}
+                {/* Annual callout */}
+                <div className="mb-8" style={{ minHeight: "1.25rem" }}>
+                  {annual ? (
+                    <HudLabel style={{ color: "rgba(255,255,255,0.3)" }}>
+                      Billed ${t.annualTotal.toFixed(2)} annually
+                    </HudLabel>
+                  ) : (
+                    <HudLabel style={{ color: "rgba(255,255,255,0.18)" }}>
+                      or ${t.annualMonthly.toFixed(2)}/mo billed annually
+                    </HudLabel>
+                  )}
+                </div>
+
+                <Hairline className="mb-8" />
+
+                <ul className="space-y-3 flex-1">
+                  {t.features.map(f => (
+                    <li key={f} className="flex items-start gap-3 text-sm text-white/60">
+                      <span style={{ color: ACCENT }} className="shrink-0 mt-0.5">—</span>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+
+                <a href="#cta"
+                  className="mt-10 block text-center py-3 font-mono text-[11px] uppercase tracking-[0.25em] transition-all duration-300"
+                  style={t.highlight
+                    ? { background: ACCENT, color: "#fff" }
+                    : { border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.7)" }}
+                  onMouseEnter={e => { if (!t.highlight) (e.currentTarget.style.borderColor = ACCENT); }}
+                  onMouseLeave={e => { if (!t.highlight) (e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"); }}>
+                  Get Access
+                </a>
               </div>
-              <HudLabel className="mt-1 mb-8">{t.sub}</HudLabel>
-
-              <Hairline className="mb-8" />
-
-              <ul className="space-y-3 flex-1">
-                {t.features.map(f => (
-                  <li key={f} className="flex items-start gap-3 text-sm text-white/60">
-                    <span style={{ color: ACCENT }} className="flex-shrink-0 mt-0.5">—</span>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-
-              <a href="#cta" className="mt-10 block text-center py-3 font-mono text-[11px] uppercase tracking-[0.25em] transition-all duration-300"
-                style={t.highlight
-                  ? { background: ACCENT, color: "#fff" }
-                  : { border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.7)" }
-                }
-                onMouseEnter={e => { if (!t.highlight) (e.currentTarget.style.borderColor = ACCENT); }}
-                onMouseLeave={e => { if (!t.highlight) (e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"); }}>
-                Get Access
-              </a>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
@@ -637,7 +744,7 @@ function Footer() {
       <div className="mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-8">
           <Logo />
-          <HudLabel>© 2026 Compass 360</HudLabel>
+          <HudLabel>© 2026 Fairwinds 360</HudLabel>
         </div>
         <div className="flex items-center gap-6">
           {["Privacy", "Terms"].map(l => (
